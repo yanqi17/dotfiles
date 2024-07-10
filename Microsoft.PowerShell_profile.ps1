@@ -4,6 +4,7 @@ Remove-Alias -Name ni -Force
 Remove-Alias -Name r -Force
 
 $env:POWERSHELL_UPDATECHECK = 'Off'
+
 function update {& { $(Invoke-RestMethod aka.ms/install-powershell.ps1 ) } -UseMSI}
 function touch($filename) {New-Item -ItemType File -Name "$filename"}
 function vi($filename) {notepad $filename}
@@ -27,6 +28,7 @@ function c {cat C:\Users\yanqi\Documents\PowerShell\Microsoft.PowerShell_profile
 function r {notepad C:\Users\yanqi\Documents\PowerShell\Microsoft.PowerShell_profile.ps1}
 function x {rm ‪C:\Users\yanqi\.ssh\known_hosts}
 
+function .ssh {cat $env:USERPROFILE\.ssh\id_rsa.pub}
 function ssh-copy-id([string]$userAtMachine, $args){   
     $publicKey = "$ENV:USERPROFILE" + "/.ssh/id_rsa.pub"
     if (!(Test-Path "$publicKey")){
@@ -36,10 +38,10 @@ function ssh-copy-id([string]$userAtMachine, $args){
         & cat "$publicKey" | ssh $args $userAtMachine "umask 077; test -d .ssh || mkdir .ssh ; cat >> .ssh/authorized_keys || exit 1"      
     }
 }
-function i() {
+function i($1) {
   cd D:\Github\$1
 }
-function serve() {
+function serve($1) {
   if (!($1)){
     live-server dist
   }  
