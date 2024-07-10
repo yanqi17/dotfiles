@@ -43,9 +43,9 @@ function i($1) {
 }
 function serve($1) {
   if (!($1)){
-    live-server dist
+    live-server dist --port=80
   }  
   else{
-    live-server $1
+    live-server $1 --port=80
   }
 }
