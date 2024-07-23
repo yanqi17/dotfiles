@@ -19,9 +19,9 @@ function y1 {ssh yanqi@154.12.37.219 -p 23333}
 function u1 {ssh sonna@192.168.40.233}
 function o1 {ssh orangepi@192.168.6.101}
 
-function c {cat C:\Users\yanqi\Documents\PowerShell\Microsoft.PowerShell_profile.ps1}
-function r {notepad C:\Users\yanqi\Documents\PowerShell\Microsoft.PowerShell_profile.ps1}
-function x {rm ‪C:\Users\yanqi\.ssh\known_hosts}
+function c {cat $env:USERPROFILE\Documents\PowerShell\Microsoft.PowerShell_profile.ps1}
+function r {notepad $env:USERPROFILE\Documents\PowerShell\Microsoft.PowerShell_profile.ps1}
+function x {rm ‪$env:USERPROFILE\.ssh\known_hosts}
 
 function .ssh {cat $env:USERPROFILE\.ssh\id_rsa.pub}
 function ssh-copy-id([string]$userAtMachine, $args){   
