@@ -5,13 +5,8 @@ Remove-Alias -Name r -Force
 
 $env:POWERSHELL_UPDATECHECK = 'Off'
 
-function update {& { $(Invoke-RestMethod aka.ms/install-powershell.ps1 ) } -UseMSI}
-function touch($filename) {New-Item -ItemType File -Name "$filename"}
-function vi($filename) {notepad $filename}
-function nio {ni --prefer-offline}
-function com {wmic path Win32_PnPEntity where "PNPClass = 'Ports'" get Caption}
-
 function p($param) {ping $param -t}
+function nio {ni --prefer-offline}
 function s {nr start}
 function d {nr dev}
 function b {nr build}
@@ -39,7 +34,7 @@ function ssh-copy-id([string]$userAtMachine, $args){
     }
 }
 function i($1) {
-  cd D:\Github\$1
+  cd D:\i\$1
 }
 function serve($1) {
   if (!($1)){
@@ -48,4 +43,16 @@ function serve($1) {
   else{
     live-server $1 --port=80
   }
+}
+function update {
+    winget upgrade -q Powershell
+}
+function touch($filename) {
+    New-Item -ItemType File -Name "$filename"
+}
+function vi($filename) {
+    notepad $filename
+}
+function com {
+    wmic path Win32_PnPEntity where "PNPClass = 'Ports'" get Caption
 }
