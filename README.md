@@ -5,3 +5,4 @@
 ### Check Also
 
 - [yanqisf/dotfiles](https://github.com/yanqisf/dotfiles) - My dotfiles
+- [yanqisf/vscode-settings](https://github.com/yanqisf/vscode-settings) - My vscode-settings
