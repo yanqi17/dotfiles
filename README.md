@@ -4,4 +4,4 @@
 
 ### Check Also
 
-- [yanqi17/dotfiles](https://github.com/yanqi17/dotfiles) - My dotfiles
+- [yanqisf/dotfiles](https://github.com/yanqisf/dotfiles) - My dotfiles
