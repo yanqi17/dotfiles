@@ -38,34 +38,50 @@ function com {
     wmic path Win32_PnPEntity where PNPClass = 'Ports' get Caption
 }
 
-function grt {cd $(git rev-parse --show-toplevel)}
-function gs {git status}
-function gp {git push}
-function gpf {git push --force}
-function gpft {git push --follow-tags}
-function gpl {git pull --rebase}
-function gcl {git clone}
-function gst {git stash}
-function grm {git rm}
-function gmv {git mv}
-function main {git checkout main}
-function gco {git checkout}
-function gcob {git checkout -b}
-function gb {git branch}
-function gbd {git branch -d}
-function grb {git rebase}
-function grbom {git rebase originmaster}
-function grbc {git rebase --continue}
-function gl {git log}
-function glo {git log --oneline --graph}
-function grh {git reset HEAD}
-function grh1 {git reset HEAD~1}
-function ga {git add}
-function gA {git add -A}
-function gc {git commit}
-function gcm {git commit -m}
-function gca {git commit -a}
-function gxn {git clean -dn}
-function gx {git clean -df}
-function gsha {git rev-parse HEAD  pbcopy}
-function ghci {gh run list -L 1}
+# 核心跳转：回到 Git 根目录
+function grt { cd $(git rev-parse --show-toplevel) }
+
+# 基础操作
+function gs { git status }
+function gp { git push $args }
+function gpf { git push --force $args }
+function gpft { git push --follow-tags $args }
+function gpl { git pull --rebase $args }
+function gcl { git clone $args }
+function gst { git stash $args }
+function grm { git rm $args }
+function gmv { git mv $args }
+
+# 分支管理
+function main { git checkout main }
+function gco { git checkout $args }
+function gcob { git checkout -b $args }
+function gb { git branch $args }
+function gbd { git branch -d $args }
+
+# 变基操作
+function grb { git rebase $args }
+function grbom { git rebase origin/master $args }
+function grbc { git rebase --continue }
+
+# 日志与重置
+function gl { git log $args }
+function glo { git log --oneline --graph $args }
+function grh { git reset HEAD $args }
+function grh1 { git reset HEAD~1 $args }
+
+# 暂存与提交
+function ga { git add $args }
+function gA { git add -A }
+function gc { git commit $args }
+function gcm { git commit -m $args }
+function gca { git commit -a $args }
+
+# 清理
+function gxn { git clean -dn }
+function gx { git clean -df }
+
+# 特殊工具
+# 注意：Windows 默认没有 pbcopy，改用 Set-Clipboard
+function gsha { git rev-parse HEAD | Set-Clipboard }
+function ghci { gh run list -L 1 $args }
